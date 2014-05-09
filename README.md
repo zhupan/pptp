@@ -80,14 +80,19 @@ cat >>/etc/ppp/pptpd-options<<EOF
 pre-up iptables-restore < /etc/iptables.up.rules
 post-down iptables-restore < /etc/iptables.down.rules
 EOF
-增加用户
+
 
 增加帐号密码都是test的用户
 
 cat >/etc/ppp/chap-secrets <<END
 test pptpd test *
 END
+
 重启服务
 
 /etc/init.d/pptpd restart
 netstat -lntp
+
+脚本
+
+wget -c https://github.com/zhupan/pptp/blob/master/pptp.sh
